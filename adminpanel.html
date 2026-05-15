@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dano Events - Admin Panel</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Supabase JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Jost', sans-serif; background-color: #f3f4f6; }
+        .input-group { margin-bottom: 1.5rem; }
+        .input-label { display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem; }
+        .input-field { width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.375rem; outline: none; transition: border-color 0.2s; }
+        .input-field:focus { border-color: #ff6b8b; box-shadow: 0 0 0 1px #ff6b8b; }
+        .section-card { background: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .btn-primary { background-color: #ff6b8b; color: white; padding: 0.75rem 2rem; border-radius: 0.375rem; font-weight: 500; transition: background-color 0.2s; cursor: pointer; }
+        .btn-primary:hover { background-color: #e55a7a; }
+        .btn-secondary { background-color: #e5e7eb; color: #374151; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: background-color 0.2s; cursor: pointer; }
+        .btn-secondary:hover { background-color: #d1d5db; }
+        .btn-danger { background-color: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 0.375rem; font-weight: 500; transition: background-color 0.2s; cursor: pointer; }
+        .btn-danger:hover { background-color: #dc2626; }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background: #10b981; color: white; padding: 1rem 2rem; border-radius: 0.5rem; transform: translateY(150%); transition: transform 0.3s; z-index: 50; }
+        .toast.show { transform: translateY(0); }
+        .array-item { border: 1px solid #e5e7eb; padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem; background: #f9fafb; position: relative; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="bg-white shadow-sm p-4 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-semibold" style="color: #590d22;">Dano Events <span class="text-gray-400 text-sm font-normal ml-2">Admin Dashboard</span></h1>
+            <button id="saveBtnTop" class="btn-primary" onclick="saveContent()">Save Changes</button>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 mt-6 grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <div class="md:col-span-3">
+            <div class="bg-white rounded-lg shadow-sm p-4 sticky top-24">
+                <ul class="space-y-2">
+                    <li><a href="#hero-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Hero Section</a></li>
+                    <li><a href="#about-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">About Section</a></li>
+                    <li><a href="#services-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Services</a></li>
+                    <li><a href="#specialities-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Specialities</a></li>
+                    <li><a href="#gallery-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Gallery</a></li>
+                    <li><a href="#contact-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Contact & Info</a></li>
+                    <li><a href="#social-section" class="block p-2 text-gray-600 hover:bg-pink-50 hover:text-pink-600 rounded">Social Links</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Form Content -->
+        <div class="md:col-span-9" id="adminForm">
+            
+            <div class="mb-6 p-4 bg-blue-50 text-blue-800 border border-blue-200 rounded-lg">
+                <p class="font-medium">Welcome to the Admin Panel!</p>
+                <p class="text-sm mt-1">Changes made here will instantly update the public User Panel.</p>
+            </div>
+
+            <!-- Hero Section -->
+            <div id="hero-section" class="section-card">
+                <h2 class="text-xl font-semibold mb-6 border-b pb-2">Hero Section</h2>
+                <div class="input-group">
+                    <label class="input-label">Hero Tagline</label>
+                    <input type="text" id="hero_tagline" class="input-field" placeholder="e.g. ✦ Luxury Events · Exquisite Catering">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Hero Title (HTML allowed for styling, e.g. use &lt;br&gt; and &lt;em&gt;)</label>
+                    <input type="text" id="hero_title" class="input-field" placeholder="e.g. Dano Events<br><em>Ltd</em>">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Hero Subtitle</label>
+                    <textarea id="hero_subtitle" class="input-field h-24" placeholder="Description text under the title..."></textarea>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Background Video URL (MP4)</label>
+                    <input type="text" id="hero_video" class="input-field" placeholder="e.g. assets/my-video.mp4 or https://...">
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div id="about-section" class="section-card">
+                <h2 class="text-xl font-semibold mb-6 border-b pb-2">About Section</h2>
+                <div class="input-group">
+                    <label class="input-label">About Image URL</label>
+                    <input type="text" id="about_image" class="input-field" placeholder="e.g. assets/images/about.jpg">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Years of Excellence Badge</label>
+                    <input type="text" id="about_years" class="input-field" placeholder="e.g. 15+">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Paragraph 1</label>
+                    <textarea id="about_p1" class="input-field h-24"></textarea>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Paragraph 2</label>
+                    <textarea id="about_p2" class="input-field h-24"></textarea>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Paragraph 3</label>
+                    <textarea id="about_p3" class="input-field h-24"></textarea>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div id="services-section" class="section-card">
+                <div class="flex justify-between items-center border-b pb-2 mb-6">
+                    <h2 class="text-xl font-semibold">Services</h2>
+                    <button class="btn-secondary" onclick="addService()">+ Add Service</button>
+                </div>
+                <div id="services_container"></div>
+            </div>
+
+            <!-- Specialities Section -->
+            <div id="specialities-section" class="section-card">
+                <div class="flex justify-between items-center border-b pb-2 mb-6">
+                    <h2 class="text-xl font-semibold">Specialities (Text Only)</h2>
+                </div>
+                <div id="specialities_container"></div>
+            </div>
+
+            <!-- Gallery Section -->
+            <div id="gallery-section" class="section-card">
+                <div class="flex justify-between items-center border-b pb-2 mb-6">
+                    <h2 class="text-xl font-semibold">Gallery</h2>
+                    <button class="btn-secondary" onclick="addGalleryItem()">+ Add Gallery Item</button>
+                </div>
+                <div id="gallery_container"></div>
+            </div>
+
+            <!-- Contact & General Info -->
+            <div id="contact-section" class="section-card">
+                <h2 class="text-xl font-semibold mb-6 border-b pb-2">Contact & General Info</h2>
+                <div class="input-group">
+                    <label class="input-label">Email Address</label>
+                    <input type="email" id="contact_email" class="input-field" placeholder="e.g. hello@danoevents.co.uk">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Phone Number</label>
+                    <input type="text" id="contact_phone" class="input-field" placeholder="e.g. +44 20 7123 4567">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Physical Address</label>
+                    <input type="text" id="contact_address" class="input-field" placeholder="e.g. 6 Mill Road, E16 2BE, London">
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div id="social-section" class="section-card">
+                <h2 class="text-xl font-semibold mb-6 border-b pb-2">Social Media Links</h2>
+                <div class="input-group">
+                    <label class="input-label">Facebook Link</label>
+                    <input type="text" id="social_facebook" class="input-field" placeholder="https://facebook.com/...">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Instagram Link</label>
+                    <input type="text" id="social_instagram" class="input-field" placeholder="https://instagram.com/...">
+                </div>
+                <div class="input-group">
+                    <label class="input-label">LinkedIn Link</label>
+                    <input type="text" id="social_linkedin" class="input-field" placeholder="https://linkedin.com/in/...">
+                </div>
+            </div>
+
+            <div class="flex justify-end mb-10">
+                <button id="saveBtnBottom" class="btn-primary text-lg px-8 py-3" onclick="saveContent()">Save All Changes</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Success Toast -->
+    <div id="toast" class="toast">
+        ✅ Changes saved successfully!
+    </div>
+    <div id="toast-error" class="toast bg-red-500">
+        ❌ Error saving changes.
+    </div>
+
+    <!-- Initialization Script -->
+    <script>
+        // Initialize Supabase
+        const supabaseUrl = 'https://uikrgyjgffxleldjmeua.supabase.co';
+        const supabaseKey = 'sb_publishable_CAJhaZNpK017yZvHSrS0Ig_aB0pyYlY';
+        const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        const TABLE_NAME = 'site_content';
+        const ROW_ID = 1;
+
+        const simpleFields = [
+            'hero_tagline', 'hero_title', 'hero_subtitle', 'hero_video',
+            'about_image', 'about_years', 'about_p1', 'about_p2', 'about_p3',
+            'contact_email', 'contact_phone', 'contact_address',
+            'social_facebook', 'social_instagram', 'social_linkedin'
+        ];
+
+        let servicesData = [];
+        let specialitiesData = [];
+        let galleryData = [];
+
+        // Fetch existing data on load
+        async function fetchContent() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from(TABLE_NAME)
+                    .select('*')
+                    .eq('id', ROW_ID)
+                    .single();
+
+                if (error && error.code !== 'PGRST116') {
+                    console.error('Error fetching data:', error);
+                    return;
+                }
+
+                if (data) {
+                    // Populate simple inputs
+                    simpleFields.forEach(field => {
+                        if (document.getElementById(field) && data[field]) {
+                            document.getElementById(field).value = data[field];
+                        }
+                    });
+
+                    // Populate arrays
+                    if (data.services) servicesData = data.services;
+                    if (data.specialities) specialitiesData = data.specialities;
+                    if (data.gallery) galleryData = data.gallery;
+
+                    renderServices();
+                    renderSpecialities();
+                    renderGallery();
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // --- SERVICES RENDER & LOGIC ---
+        function renderServices() {
+            const container = document.getElementById('services_container');
+            container.innerHTML = '';
+            servicesData.forEach((svc, index) => {
+                container.innerHTML += `
+                    <div class="array-item">
+                        <div class="flex justify-between mb-4">
+                            <h4 class="font-semibold text-gray-600">Service #${index + 1}</h4>
+                            <button onclick="removeService(${index})" class="text-red-500 hover:text-red-700 text-sm">Remove</button>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Image URL</label>
+                            <input type="text" class="input-field" value="${svc.image || ''}" onchange="updateService(${index}, 'image', this.value)">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Title</label>
+                            <input type="text" class="input-field" value="${svc.title || ''}" onchange="updateService(${index}, 'title', this.value)">
+                        </div>
+                        <div class="input-group mb-0">
+                            <label class="input-label">Description</label>
+                            <textarea class="input-field h-20" onchange="updateService(${index}, 'desc', this.value)">${svc.desc || ''}</textarea>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        function addService() {
+            servicesData.push({ image: '', title: '', desc: '' });
+            renderServices();
+        }
+        function removeService(index) {
+            servicesData.splice(index, 1);
+            renderServices();
+        }
+        function updateService(index, key, value) {
+            servicesData[index][key] = value;
+        }
+
+        // --- SPECIALITIES RENDER & LOGIC ---
+        function renderSpecialities() {
+            const container = document.getElementById('specialities_container');
+            container.innerHTML = '';
+            specialitiesData.forEach((spec, index) => {
+                container.innerHTML += `
+                    <div class="array-item">
+                        <div class="flex justify-between mb-4">
+                            <h4 class="font-semibold text-gray-600">Speciality #${index + 1}</h4>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Title</label>
+                            <input type="text" class="input-field" value="${spec.title || ''}" onchange="updateSpeciality(${index}, 'title', this.value)">
+                        </div>
+                        <div class="input-group mb-0">
+                            <label class="input-label">Description</label>
+                            <textarea class="input-field h-20" onchange="updateSpeciality(${index}, 'desc', this.value)">${spec.desc || ''}</textarea>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        function updateSpeciality(index, key, value) {
+            specialitiesData[index][key] = value;
+        }
+
+        // --- GALLERY RENDER & LOGIC ---
+        function renderGallery() {
+            const container = document.getElementById('gallery_container');
+            container.innerHTML = '';
+            galleryData.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="array-item">
+                        <div class="flex justify-between mb-4">
+                            <h4 class="font-semibold text-gray-600">Gallery Item #${index + 1}</h4>
+                            <button onclick="removeGalleryItem(${index})" class="text-red-500 hover:text-red-700 text-sm">Remove</button>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Media Type</label>
+                            <select class="input-field" onchange="updateGallery(${index}, 'type', this.value)">
+                                <option value="image" ${item.type === 'image' ? 'selected' : ''}>Image</option>
+                                <option value="video" ${item.type === 'video' ? 'selected' : ''}>Video</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label">Media URL</label>
+                            <input type="text" class="input-field" value="${item.media || ''}" onchange="updateGallery(${index}, 'media', this.value)">
+                        </div>
+                        <div class="input-group mb-0">
+                            <label class="input-label">Caption (Optional)</label>
+                            <input type="text" class="input-field" value="${item.caption || ''}" onchange="updateGallery(${index}, 'caption', this.value)">
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        function addGalleryItem() {
+            galleryData.push({ type: 'image', media: '', caption: '' });
+            renderGallery();
+        }
+        function removeGalleryItem(index) {
+            galleryData.splice(index, 1);
+            renderGallery();
+        }
+        function updateGallery(index, key, value) {
+            galleryData[index][key] = value;
+        }
+
+        // --- SAVE DATA ---
+        async function saveContent() {
+            const btns = [document.getElementById('saveBtnTop'), document.getElementById('saveBtnBottom')];
+            btns.forEach(b => { b.innerText = 'Saving...'; b.disabled = true; });
+
+            const updates = { id: ROW_ID };
+            simpleFields.forEach(field => {
+                const el = document.getElementById(field);
+                if (el) updates[field] = el.value;
+            });
+
+            // Add JSON arrays
+            updates.services = servicesData;
+            updates.specialities = specialitiesData;
+            updates.gallery = galleryData;
+
+            try {
+                const { error } = await supabaseClient
+                    .from(TABLE_NAME)
+                    .upsert(updates);
+
+                if (error) {
+                    showToast('toast-error');
+                    console.error('Supabase Save Error:', error);
+                } else {
+                    showToast('toast');
+                }
+            } catch (err) {
+                showToast('toast-error');
+                console.error(err);
+            } finally {
+                btns.forEach(b => { b.innerText = 'Save Changes'; b.disabled = false; });
+            }
+        }
+
+        function showToast(id) {
+            const toast = document.getElementById(id);
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Load data on start
+        window.addEventListener('DOMContentLoaded', fetchContent);
+    </script>
+</body>
+</html>
