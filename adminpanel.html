@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dano Events - Admin Panel</title>
+    <!-- Auth Check (Must run before page loads) -->
+    <script>
+        if (localStorage.getItem('dano_admin_auth') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+    </script>
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -32,7 +38,10 @@
     <nav class="bg-white shadow-sm p-4 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <h1 class="text-2xl font-semibold" style="color: #590d22;">Dano Events <span class="text-gray-400 text-sm font-normal ml-2">Admin Dashboard</span></h1>
-            <button id="saveBtnTop" class="btn-primary" onclick="saveContent()">Save Changes</button>
+            <div class="flex gap-4">
+                <button id="saveBtnTop" class="btn-primary" onclick="saveContent()">Save Changes</button>
+                <button class="btn-secondary" onclick="logout()">Logout</button>
+            </div>
         </div>
     </nav>
 
@@ -188,6 +197,12 @@
         const supabaseUrl = 'https://uikrgyjgffxleldjmeua.supabase.co';
         const supabaseKey = 'sb_publishable_CAJhaZNpK017yZvHSrS0Ig_aB0pyYlY';
         const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // --- LOGOUT ---
+        function logout() {
+            localStorage.removeItem('dano_admin_auth');
+            window.location.href = 'admin-login.html';
+        }
 
         const TABLE_NAME = 'site_content';
         const ROW_ID = 1;
