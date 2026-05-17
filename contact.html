@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JBEZ EVENTS LTD – Events & Catering</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="inner-page">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="toast">✓ Message sent! We'll be in touch shortly.</div>
+
+<nav id="navbar">
+    <a href="index.html" class="nav-logo"
+      style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
+      <div style="display:flex; align-items:center; gap: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--gold)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 19.93C7.05 19.43 4 16.05 4 12C4 7.95 7.05 4.57 11 4.07V19.93ZM13 4.07C16.95 4.57 20 7.95 20 12C20 16.05 16.95 19.43 13 19.93V4.07Z"/>
+          <path d="M12 2C12 2 15 6 15 12C15 18 12 22 12 22C12 22 9 18 9 12C9 6 12 2 12 2Z" fill="var(--gold-light)"/>
+        </svg>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em;">JBEZ</span>
+      </div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; color: var(--white); margin-top: 4px; padding-left: 24px;">
+        EVENTS LTD</div>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav><div style="padding-top: 100px;"></div><section id="contact">
+    <div class="contact-layout">
+      <div>
+        <span class="section-label reveal">Get In Touch</span>
+        <h2 class="section-title reveal" style="color:var(--white)">Let's Create Something <em>Extraordinary</em></h2>
+        <div class="divider reveal"></div>
+        <div style="margin-top:3rem;" class="reveal">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                <path d="M10 2C7.24 2 5 4.24 5 7c0 4.25 5 11 5 11s5-6.75 5-11c0-2.76-2.24-5-5-5z" stroke="#c9a84c"
+                  stroke-width="1.2" />
+                <circle cx="10" cy="7" r="2" stroke="#c9a84c" stroke-width="1" />
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Address</strong>
+              <span>40 Bryantwood Road, London, England, N7 7BE</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                <path
+                  d="M3 3h3l1.5 4-2 1.5a11 11 0 005 5L12 11l4 1.5V16a1 1 0 01-1 1C7.04 17 3 12.96 3 4a1 1 0 011-1h-1z"
+                  stroke="#c9a84c" stroke-width="1.2" />
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Phone</strong>
+              <span>+44 204 569 0255</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                <rect x="2" y="4" width="16" height="13" rx="1" stroke="#c9a84c" stroke-width="1.2" />
+                <path d="M2 7l8 5 8-5" stroke="#c9a84c" stroke-width="1.2" />
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              <span>info@jbez.co.uk</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+                <circle cx="10" cy="10" r="8" stroke="#c9a84c" stroke-width="1.2" />
+                <path d="M10 5v5l3 3" stroke="#c9a84c" stroke-width="1.2" />
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Hours</strong>
+              <span>Mon–Sat: 9am – 8pm<br />Sunday: By appointment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your first name" required />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Your last name" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+44 ..." />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select required>
+            <option value="" disabled selected>Select a service type</option>
+            <option>Nature Photography Shoot</option>
+            <option>Commercial Video Production</option>
+            <option>Theatrical Casting</option>
+            <option>Post-Production Services</option>
+            <option>Aerial Drone Photography</option>
+            <option>Television Broadcasting</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Project Budget</label>
+            <input type="number" placeholder="e.g. 100" min="1" />
+          </div>
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Project</label>
+          <textarea placeholder="Share your vision, theme, special requirements..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry →</button>
+      </form>
+    </div>
+  </section>
+<footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"
+          style="display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1; margin-bottom: 1.5rem; text-decoration: none;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; display:flex; align-items:center;">
+            JBEZ
+          </div>
+          <div style="font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; color: rgba(255,255,255,0.7); margin-top: 4px; padding-left: 20px;">
+            EVENTS LTD</div>
+        </a>
+        <p>London's premier creative studio for Nature Photography, Motion Picture, and Television.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Specialities</h4>
+        <ul>
+          <li><a href="services.html">Nature Photography</a></li>
+          <li><a href="services.html">Cinematography</a></li>
+          <li><a href="services.html">Commercial Design</a></li>
+          <li><a href="services.html">Theatrical Casting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="gallery.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="contact_address" href="#">40 Bryantwood Road, London, England, N7 7BE</a></li>
+          <li><a id="contact_phone" href="tel:442045690255">+44 204 569 0255</a></li>
+          <li><a id="contact_email" href="mailto:info@jbez.co.uk">info@jbez.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 JBEZ EVENTS LTD. All rights reserved. Registered in England & Wales.</p>
+      <div style="font-size: 0.7rem; color: rgba(255,255,255,0.2); margin-top: 0.5rem; text-align: left; max-width: 600px;">
+        Nature of business (SIC): Specialised design activities - Photographic activities not elsewhere classified - Motion picture, television and other theatrical casting activities
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JBEZ EVENTS LTD – Events & Catering</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="inner-page">
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="toast">✓ Message sent! We'll be in touch shortly.</div>
+
+<nav id="navbar">
+    <a href="index.html" class="nav-logo"
+      style="display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
+      <div style="display:flex; align-items:center; gap: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--gold)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM11 19.93C7.05 19.43 4 16.05 4 12C4 7.95 7.05 4.57 11 4.07V19.93ZM13 4.07C16.95 4.57 20 7.95 20 12C20 16.05 16.95 19.43 13 19.93V4.07Z"/>
+          <path d="M12 2C12 2 15 6 15 12C15 18 12 22 12 22C12 22 9 18 9 12C9 6 12 2 12 2Z" fill="var(--gold-light)"/>
+        </svg>
+        <span style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em;">JBEZ</span>
+      </div>
+      <div style="font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; color: var(--white); margin-top: 4px; padding-left: 24px;">
+        EVENTS LTD</div>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Portfolio</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav><div style="padding-top: 100px;"></div>
+  <section id="services">
+    <div class="services-header">
+      <div class="reveal">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title" style="color:var(--white)">Creative <em>Media</em><br />Services</h2>
+        <div class="divider"></div>
+      </div>
+      <p class="services-intro reveal">From vision to execution, we capture the beauty of the natural world and produce cinematic experiences for television and theatrical release.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=400&q=80" alt="Nature Photography" />
+        </div>
+        <div class="service-content">
+          <h3>Nature Photography</h3>
+          <p>We capture the raw, untouched beauty of the natural world. Our professional photographers specialize in landscapes, wildlife, and intricate macro photography.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?auto=format&fit=crop&w=400&q=80" alt="Cinematography" />
+        </div>
+        <div class="service-content">
+          <h3>Motion Picture & TV</h3>
+          <p>Full-scale cinematography services for motion pictures and television broadcasting. We utilize industry-leading RED and ARRI camera systems for flawless 8K capture.</p>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img-wrapper">
+          <img class="service-img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80" alt="Specialised Design" />
+        </div>
+        <div class="service-content">
+          <h3>Specialised Design</h3>
+          <p>Our creative team provides bespoke graphic design, industrial layout, and visual identity services to perfectly accompany your media projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="specialities">
+    <div style="text-align:center; max-width:700px; margin:0 auto;">
+      <span class="section-label reveal">Technical Excellence</span>
+      <h2 class="section-title reveal">Our Production <em>Specialities</em></h2>
+      <div class="divider center reveal"></div>
+      <p class="reveal" style="font-size:1rem; line-height:1.9; color:var(--text); font-weight:300;">We offer an extensive range of specialized production capabilities, ensuring every frame is captured with the highest fidelity.</p>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-card reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="28" stroke="#8A9A5B" stroke-width="1.5" />
+            <path d="M20 44 Q32 20 44 44" stroke="#8A9A5B" stroke-width="1.5" fill="none" />
+            <circle cx="32" cy="28" r="6" stroke="#8A9A5B" stroke-width="1" />
+          </svg>
+        </div>
+        <h3>Aerial Cinematography</h3>
+        <p>Licensed drone operators capturing breathtaking landscapes and sweeping cinematic establishing shots.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <rect x="12" y="24" width="40" height="28" rx="2" stroke="#8A9A5B" stroke-width="1.5" />
+            <path d="M20 24V16a12 12 0 0124 0v8" stroke="#8A9A5B" stroke-width="1.5" />
+            <circle cx="32" cy="38" r="6" stroke="#8A9A5B" stroke-width="1" />
+          </svg>
+        </div>
+        <h3>Theatrical Casting</h3>
+        <p>Expert casting directors matching the perfect talent to your motion picture and television requirements.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M16 44V30a16 16 0 0132 0v14H16z" stroke="#8A9A5B" stroke-width="1.5" />
+            <line x1="10" y1="44" x2="54" y2="44" stroke="#8A9A5B" stroke-width="1.5" />
+            <line x1="32" y1="20" x2="32" y2="12" stroke="#8A9A5B" stroke-width="1.5" />
+          </svg>
+        </div>
+        <h3>Post-Production</h3>
+        <p>Complete editing, color grading, sound design, and VFX capabilities delivered in our dedicated studio.</p>
+      </div>
+      <div class="spec-card reveal">
+        <div class="spec-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <ellipse cx="32" cy="44" rx="22" ry="8" stroke="#8A9A5B" stroke-width="1.5" />
+            <path d="M10 44V32c0-4.4 9.85-8 22-8s22 3.6 22 8v12" stroke="#8A9A5B" stroke-width="1.5" />
+            <ellipse cx="32" cy="32" rx="22" ry="8" stroke="#8A9A5B" stroke-width="1" opacity="0.5" />
+          </svg>
+        </div>
+        <h3>Wildlife Photography</h3>
+        <p>Specialized gear and experienced trackers ensuring the perfect macro and telephoto wildlife captures.</p>
+      </div>
+    </div>
+  </section>
+
+<footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"
+          style="display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1; margin-bottom: 1.5rem; text-decoration: none;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--gold); letter-spacing: 0.1em; display:flex; align-items:center;">
+            JBEZ
+          </div>
+          <div style="font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.3em; color: rgba(255,255,255,0.7); margin-top: 4px; padding-left: 20px;">
+            EVENTS LTD</div>
+        </a>
+        <p>London's premier creative studio for Nature Photography, Motion Picture, and Television.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Specialities</h4>
+        <ul>
+          <li><a href="services.html">Nature Photography</a></li>
+          <li><a href="services.html">Cinematography</a></li>
+          <li><a href="services.html">Commercial Design</a></li>
+          <li><a href="services.html">Theatrical Casting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="gallery.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a id="contact_address" href="#">40 Bryantwood Road, London, England, N7 7BE</a></li>
+          <li><a id="contact_phone" href="tel:442045690255">+44 204 569 0255</a></li>
+          <li><a id="contact_email" href="mailto:info@jbez.co.uk">info@jbez.co.uk</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 JBEZ EVENTS LTD. All rights reserved. Registered in England & Wales.</p>
+      <div style="font-size: 0.7rem; color: rgba(255,255,255,0.2); margin-top: 0.5rem; text-align: left; max-width: 600px;">
+        Nature of business (SIC): Specialised design activities - Photographic activities not elsewhere classified - Motion picture, television and other theatrical casting activities
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
